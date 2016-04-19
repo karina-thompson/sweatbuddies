@@ -4,7 +4,7 @@ require 'sinatra/reloader'
 require './db_config' 
 require './models/user'
 require './models/interest'
-require './models/interest_user'
+
 
 
 
@@ -24,16 +24,25 @@ end
 
 post '/user' do
   user = User.create(email: params[:email], user_name: params[:user_name], password: params[:password], location: params[:location], greeting: params[:greeting])
-  # params[:interests].each do |interest|
-    # InterestUser.create(user_id: user.id, interest_id: interest)
-  # end
-
-  user.interests = Interest.find(params[:interests].map(&:to_i))
-  # p params[:interests]
-  'Hiii'
+ 
+  user.interests = Interest.find(params[:interests])
+  
+  redirect to "/user/#{user.id}"
 end
 
-get '/user' do
- 
+get '/user/:id' do
+ # user profile page
+ erb :user, locals: {user: User.find(params[:id])}
 end 
+
+get '/user/:id/matches' do
+  me = User.find(params[:id])
+  matches = []
+  User.all.each do |user|
+    matches << user if user != me && me.compatible?(user) 
+  end
+
+  erb :matches, locals: {matches: matches}
+end
+
 

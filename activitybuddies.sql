@@ -25,6 +25,12 @@ CREATE TABLE interest_users (
   UNIQUE (user_id, interest_id)
 );
 
+CREATE TABLE interests_users (
+  user_id INTEGER,
+  interest_id INTEGER,
+  UNIQUE (user_id, interest_id)
+);
+
 -- CREATE TABLE activities (
 --   id SERIAL4 PRIMARY KEY,
 --   name VARCHAR(200),
