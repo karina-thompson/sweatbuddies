@@ -8,7 +8,8 @@ CREATE TABLE users (
   password_digest VARCHAR(400),
   user_name VARCHAR(200),
   location VARCHAR(200),
-  greeting VARCHAR(500)
+  greeting VARCHAR(500),
+  UNIQUE (email)
 );
 
 CREATE TABLE interests (
@@ -20,7 +21,8 @@ CREATE TABLE interests (
 CREATE TABLE interest_users (
   id SERIAL4 PRIMARY KEY,
   user_id INTEGER,
-  interest_id INTEGER
+  interest_id INTEGER,
+  UNIQUE (user_id, interest_id)
 );
 
 -- CREATE TABLE activities (
