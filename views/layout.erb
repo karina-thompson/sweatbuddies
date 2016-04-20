@@ -9,7 +9,7 @@
 
 </head>
 <body>
-  
+
    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -19,23 +19,42 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Sweat Buddies</a>
+          <a class="navbar-brand" href="/">Sweat Buddies</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse navbar-right">
-          <ul class="nav navbar-nav">
-            <li><a href="#">Your profile</a></li>
-          <li><a href="#">Search</a></li>
-          <form class="navbar-form navbar-right">
-            <button type="submit" class="btn btn-default">Logout</button>
-            </ul>
-          </form>
+        <% if logged_in? %>
+          <div id="navbar" class="navbar-collapse collapse navbar-right">
+            <ul class="nav navbar-nav">
+              <li><a href="/users/<%= current_user.id %>"><%= current_user.user_name %></a></li>
+            <li><a href="#">Search</a></li>
+            <form class="navbar-form navbar-right" action="/logout" method="post">
+              <input type="hidden"  value="delete"  name="_method">
+              <button class="btn btn-default">Logout</button>
+              </ul>
+            </form>
+          </div>
         </div>
+        <% else %>  
+          <div id="navbar" class="navbar-collapse collapse navbar-right">
+          <form class="navbar-form" action='/login' method="post">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control" name="email">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control" name="password">
+            </div>
+              <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+          </div>
+        <% end %>
       </div>
     </nav>
-
+  
+  <%= alert_message %>
+  
   <%= yield %>
 
   <div class="container">
+
   <footer>
     <hr>
     <p><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>Open Source 2016 - Karina Thompson, GA WDI Project 2</p>

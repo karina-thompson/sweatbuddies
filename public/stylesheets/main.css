@@ -1,6 +1,5 @@
 body {
-  padding-top: 65px;
-  padding-left: 30px;
+  padding-top: 50px;
 }
 
 
@@ -10,7 +9,6 @@ body {
 }
 
 #imageSlide {
-  padding-top: 40px;
 }
 
 .jumbotron {
@@ -25,7 +23,6 @@ body {
 #chooseInterests {
   padding-left: 20px;
 }
-
 
 
 footer {

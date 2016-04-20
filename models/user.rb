@@ -6,9 +6,7 @@ class User < ActiveRecord::Base
   validates_presence_of :location
   validates_presence_of :user_name
 
-  def compatible?(user)
-    common_interests.length > 0
-  end
+ 
 
   def common_interests(user)
     common = []
@@ -16,6 +14,10 @@ class User < ActiveRecord::Base
       common << interest if user.interests.include? interest
     end
     common
+  end
+
+  def compatible?(user)
+    common_interests(user).length > 0
   end
 
 end
