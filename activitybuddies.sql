@@ -18,26 +18,25 @@ CREATE TABLE interests (
 );
 
 
-CREATE TABLE interest_users (
-  id SERIAL4 PRIMARY KEY,
-  user_id INTEGER,
-  interest_id INTEGER,
-  UNIQUE (user_id, interest_id)
-);
-
 CREATE TABLE interests_users (
   user_id INTEGER,
   interest_id INTEGER,
   UNIQUE (user_id, interest_id)
 );
 
--- CREATE TABLE activities (
---   id SERIAL4 PRIMARY KEY,
---   name VARCHAR(200),
---   location VARCHAR(200),
---   cost MONEY,
---   day VARCHAR(10),
---   date DATE
--- );
+INSERT into interests (name) VALUES ('Running/Jogging');
+INSERT into interests (name) VALUES ('Walking/Hiking'); 
+INSERT into interests (name) VALUES ('Gym based exercise');
+INSERT into interests (name) VALUES ('Team Sports');
+INSERT into interests (name) VALUES ('Cycling');
+INSERT into interests (name) VALUES ('Water based activities');
+INSERT into interests (name) VALUES ('Dancing');
+INSERT into interests (name) VALUES ('Yoga');
+INSERT into interests (name) VALUES ('Snow sports');
+INSERT into interests (name) VALUES ('Fitness classes');
+
+
+
+
 
 
