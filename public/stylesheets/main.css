@@ -1,0 +1,33 @@
+body {
+  padding-top: 65px;
+  padding-left: 30px;
+}
+
+
+.carousel-inner img {
+  width: 600px;
+  margin: auto;
+}
+
+#imageSlide {
+  padding-top: 40px;
+}
+
+.jumbotron {
+  text-align: center;
+}
+
+
+#profileCreate {
+  padding-bottom: 30px;
+}
+
+#chooseInterests {
+  padding-left: 20px;
+}
+
+
+
+footer {
+  padding-top: 30px;
+}

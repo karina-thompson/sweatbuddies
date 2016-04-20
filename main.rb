@@ -17,11 +17,14 @@ get '/' do
   erb :index
 end
 
+# Show sign up form
 get '/user/new' do
   @interests = Interest.all 
   erb :signup
 end
 
+
+# Create new profile
 post '/user' do
   user = User.create(email: params[:email], user_name: params[:user_name], password: params[:password], location: params[:location], greeting: params[:greeting])
  
@@ -30,12 +33,15 @@ post '/user' do
   redirect to "/user/#{user.id}"
 end
 
+# Show user profile
 get '/user/:id' do
  # user profile page
  erb :user, locals: {user: User.find(params[:id])}
 end 
 
-get '/user/:id/matches' do
+
+
+get '/user/:id/search_results' do
   me = User.find(params[:id])
   matches = []
   User.all.each do |user|

@@ -1,0 +1,16 @@
+
+
+<div class="container">
+  <h1><%= user.user_name %></h1>
+  <h3>Location: <%=user.location %></h3>
+  <p>"<%= user.greeting %>"</p>
+  <p>I am interested in:</p> 
+  <ul>
+  <% user.interests.each do |interest| %>
+      <li><%= interest.name %></li> 
+    <% end %>
+  </ul>
+
+
+
+</div>
