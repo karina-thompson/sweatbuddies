@@ -1,6 +1,4 @@
 
-
-
 <div class="container" id="createEvent">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
@@ -22,10 +20,10 @@
         </div>
          <div class="form-group">
           <label for="details">Details:</label>
-          <textarea class="form-control" id="details" rows=5 name="details" placeholder="Eg. what to bring, cost..."></textarea>
+          <textarea class="form-control" id="details" rows=5 name="details" placeholder="What to bring, cost, any other relevant information..."></textarea>
         </div>
         
-        <h3>What category does this event belong to <small>(select only one):</small></h3>
+        <h3>Select the event category: <small>(one only please)</small></h3>
         <div class="form-group" id="chooseInterests">
 
         <% interests.each do |interest| %>  
@@ -36,8 +34,11 @@
         
         </div>
           
-        <button class="btn btn-default">Create Event</button>
+        <button class="btn btn-success">Create New Event</button>
       </form>
+    
+   
+
     </div>
   </div>
 </div>

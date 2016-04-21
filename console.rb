@@ -8,6 +8,4 @@ require './models/user'
 require './models/interest'
 require './models/event'
 
-
-
 binding.pry

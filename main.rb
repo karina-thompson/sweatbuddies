@@ -106,21 +106,29 @@ get '/users/:id/search_results' do
 end
 
 
+#Create event form
 get '/users/:id/events/create' do
-  erb :create_event, locals: {interests: Interest.all}
+  erb :create_event, locals: {interests: Interest.all, user: User.find(params[:id])}
 end
 
 
+#Create new event
 post '/users/:id/events' do
   event = Event.create(name: params[:name], location: params[:location], date_time: params[:date_time], details: params[:details], user_id: current_user.id, interest_id: params[:interest])
+
+  if event.id == nil
+    flash[:warning] = 'Please complete all fields'
+    redirect to "/users/#{current_user.id}/events/create"
+  end
 
   erb :event_listing, locals: {interests: Interest.all}
 end
 
+
+#Show event listings
 get '/users/:id/events' do
   erb :event_listing, locals: {interests: Interest.all, events: Event.all}
 end
-
 
 
 #show edit profile page
@@ -141,6 +149,7 @@ put '/users/:id' do
 
   redirect to "/users/#{user.id}"
 end
+
 
 
 

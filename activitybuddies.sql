@@ -48,6 +48,19 @@ INSERT into interests (name) VALUES ('Fitness classes');
 
 
 
+Interest categories
+1- Running/Jogging
+2- Walking/Hiking
+3- Gym based exercise
+4- Team sports
+5- Cycling
+6- Water based activities
+7- Dancing
+8- Yoga
+9- Snow sports
+10- Fitness classes
+
+
 
 
 
