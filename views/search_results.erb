@@ -1,4 +1,13 @@
 
-<%= matches.each do |match| %>
-  <p><% match %></p>
-  <% end %> 
+<ul>
+<% matches.each do |match| %>
+
+  <li>
+    <a href="/users/<%= match.id %>"><%= match.user_name %></a> Common Interests: 
+    <% match.common_interests(current_user).each do |common| %>
+      <span><%= common.name %> </span>
+    <% end %>
+  </li>
+  
+<% end %> 
+</ul>

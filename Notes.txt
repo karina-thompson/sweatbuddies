@@ -1,3 +1,10 @@
+u = User.new
+u.save
+  *sad trombone*
+u.errors.messages ;)
+
+flash[:danger] 
+
 
 Planning
 

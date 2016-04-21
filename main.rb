@@ -37,7 +37,16 @@ helpers do
     html
   end
 
+  def profile_errors(user)
+    if user.errors.messages[:email]
+      flash[:danger] = user.errors.messages[:email].join
+    else 
+      flash[:warning] = "Please complete all fields" 
+    end
+  end
+
 end
+
 
 get '/' do
   erb :index
@@ -46,7 +55,8 @@ end
 # Show sign up form
 get '/users/new' do
   if logged_in?
-    erb :index
+    flash[:info] = "You are already logged in!"
+    redirect to "/users/#{current_user.id}"
   else
     erb :signup, locals: {interests: Interest.all}
   end
@@ -55,12 +65,23 @@ end
 # Create new profile
 post '/users' do
   user = User.create(email: params[:email], user_name: params[:user_name], password: params[:password], location: params[:location], greeting: params[:greeting])
- 
-  user.interests = Interest.find(params[:interests])
+
+  if user.id == nil          #if AR validations have failed
+    profile_errors(user)
+    redirect to '/users/new'
+  end
   
+  if params[:interests] = [] 
+    flash[:warning] = "Please select at least one interest"
+    redirect to '/users/new'
+  end
+
+  user.interests = Interest.find(params[:interests])
+
   session[:user_id] = user.id
   redirect to "/users/#{user.id}"
 end
+
 
 # Show user profile
 get '/users/:id' do
@@ -70,6 +91,8 @@ end
 
 
 get '/users/:id/search_results' do
+  redirect to '/' unless logged_in?
+
   me = User.find(current_user.id)
   matches = []
   User.all.each do |user|
