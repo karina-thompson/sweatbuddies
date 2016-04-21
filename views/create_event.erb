@@ -1,0 +1,46 @@
+
+
+
+<div class="container" id="createEvent">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div>
+        <h2>Create an event</h2>
+      </div>
+      <form action="/users/<%= current_user.id %>/events" method="post">
+        <div class="form-group">
+          <label for="name">Event Title:</label>
+          <input type="text" class="form-control" name="name">
+        </div>
+         <div class="form-group">
+          <label for="location">Location:</label>
+          <input type="text" class="form-control" name="location">
+        </div>
+        <div class="form-group">
+          <label for="date_time">Date and Time:</label>
+          <input type="text" class="form-control" name="date_time">
+        </div>
+         <div class="form-group">
+          <label for="details">Details:</label>
+          <textarea class="form-control" id="details" rows=5 name="details" placeholder="Eg. what to bring, cost..."></textarea>
+        </div>
+        
+        <h3>What category does this event belong to <small>(select only one):</small></h3>
+        <div class="form-group" id="chooseInterests">
+
+        <% interests.each do |interest| %>  
+        <label class="checkbox">  
+            <input type="checkbox" id="checkbox<%= interest.id %>" value="<%= interest.id %>" name="interest"><%= interest.name %>
+        </label>
+        <% end %>
+        
+        </div>
+          
+        <button class="btn btn-default">Create Event</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+</div>

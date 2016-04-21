@@ -23,6 +23,18 @@ CREATE TABLE interests_users (
   UNIQUE (user_id, interest_id)
 );
 
+CREATE TABLE events (
+  id SERIAL4 PRIMARY KEY,
+  name VARCHAR(100),
+  location VARCHAR(100),
+  date_time VARCHAR(200),
+  details VARCHAR(500),
+  user_id INTEGER,
+  interest_id INTEGER
+);
+
+
+
 INSERT into interests (name) VALUES ('Running/Jogging');
 INSERT into interests (name) VALUES ('Walking/Hiking'); 
 INSERT into interests (name) VALUES ('Gym based exercise');

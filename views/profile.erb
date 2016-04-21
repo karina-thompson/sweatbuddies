@@ -2,7 +2,7 @@
 
 <div class="container" id="profile">
   <h1><%= user.user_name %></h1>
-  <h3>Location: <%=user.location %></h3>
+  <h3>Location: <%= user.location %></h3>
   <p>"<%= user.greeting %>"</p>
   <p>I am interested in:</p> 
   <ul>
@@ -10,7 +10,17 @@
       <li><%= interest.name %></li> 
     <% end %>
   </ul>
-
+  
+  <% unless user.events == [] %>
+    <h3><%= user.user_name %>'s Events</h3>
+   <% user.events.each do |event| %>
+    <h5><%= event.name %></h5>
+    <p>Location: <%= event.location %></p>
+    <p>When: <%= event.date_time %></p>
+    <p>Details: <%= event.details %></p>
+   <% end %>
+ 
+  <% end %>
   <a class="btn btn-primary btn-lg" href="mailto: <%= user.email %>" role="button"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Contact <%= user.user_name %></a>
 
 

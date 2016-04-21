@@ -5,6 +5,7 @@ require 'sinatra/flash'
 require './db_config' 
 require './models/user'
 require './models/interest'
+require './models/event'
 
 
 after do
@@ -103,6 +104,23 @@ get '/users/:id/search_results' do
 
   erb :search_results, locals: {matches: matches}
 end
+
+
+get '/users/:id/events/create' do
+  erb :create_event, locals: {interests: Interest.all}
+end
+
+
+post '/users/:id/events' do
+  event = Event.create(name: params[:name], location: params[:location], date_time: params[:date_time], details: params[:details], user_id: current_user.id, interest_id: params[:interest])
+
+  erb :event_listing, locals: {interests: Interest.all}
+end
+
+get '/users/:id/events' do
+  erb :event_listing, locals: {interests: Interest.all, events: Event.all}
+end
+
 
 
 #show edit profile page
