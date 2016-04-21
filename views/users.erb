@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Welcome to Sweat Buddies, <%= current_user.user_name %> </h1>
+
+    <h3>What would you like to do today?</h3>
+  
+    <ul>
+      <li><a href="/users/<%= current_user.id %>">See my profile</a></li>
+      <li><a href="/users/<%= current_user.id %>/edit">Update my profile</a></li>
+      <li><a href="/users/<%= current_user.id %>/search_results">See my potential new Sweat Buddies</a></li>
+    </ul>
+    
+  </div>
+
+</div>

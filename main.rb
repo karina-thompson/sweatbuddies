@@ -49,17 +49,13 @@ end
 
 
 get '/' do
+  redirect to '/users' if logged_in?
   erb :index
 end
 
 # Show sign up form
 get '/users/new' do
-  if logged_in?
-    flash[:info] = "You are already logged in!"
-    redirect to "/users/#{current_user.id}"
-  else
     erb :signup, locals: {interests: Interest.all}
-  end
 end
 
 # Create new profile
@@ -82,14 +78,18 @@ post '/users' do
   redirect to "/users/#{user.id}"
 end
 
+#User home page when logged in
+get '/users' do
+  erb :users
+end
 
 # Show user profile
 get '/users/:id' do
- erb :user, locals: {user: User.find(params[:id])}
+ erb :profile, locals: {user: User.find(params[:id])}
 end 
 
 
-
+#Display matching users
 get '/users/:id/search_results' do
   redirect to '/' unless logged_in?
 
@@ -105,13 +105,36 @@ get '/users/:id/search_results' do
 end
 
 
+#show edit profile page
+get '/users/:id/edit' do
+  if logged_in?
+    erb :edit, locals: {interests: Interest.all }
+  end
+end
+
+
+
+
+
+#update profile data
+put '/users/:id' do
+  user = User.find(current_user.id)
+  user.update(email: params[:email], user_name: params[:user_name], password: params[:password], location: params[:location], greeting: params[:greeting])
+
+  user.interests = []
+  user.interests = Interest.find(params[:interests])
+
+  redirect to "/users/#{user.id}"
+end
+
+
 
 post '/login' do
   user = User.find_by(email: params[:email])
   if user && user.authenticate(params[:password])
 
     session[:user_id] = user.id
-    redirect to "/users/#{user.id}"
+    redirect to "/users"
   else
     flash[:warning] = 'Sorry, that login was incorrect'
     redirect to '/'

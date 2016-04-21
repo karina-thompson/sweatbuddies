@@ -35,3 +35,9 @@ footer {
 #profile {
   padding-top: 80px;
 }
+
+#matches li {
+  padding: 10px;
+  list-style-type: none;
+  font-size: 1.5em;
+}

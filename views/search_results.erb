@@ -1,13 +1,22 @@
 
-<ul>
-<% matches.each do |match| %>
 
-  <li>
-    <a href="/users/<%= match.id %>"><%= match.user_name %></a> Common Interests: 
-    <% match.common_interests(current_user).each do |common| %>
-      <span><%= common.name %> </span>
-    <% end %>
-  </li>
-  
-<% end %> 
-</ul>
+
+
+<div class="container">
+
+<h3>Users with common interests  <small>Say hello, don't be shy!</h3>
+
+  <ul id="matches">
+  <% matches.each do |match| %>
+
+    <li>
+      <a href="/users/<%= match.id %>"><%= match.user_name %></a><br> You both like: 
+      <% match.common_interests(current_user).each do |common| %>
+        <span><%= common.name %></span>
+      <% end %>
+    </li>
+    
+  <% end %> 
+  </ul>
+
+</div>

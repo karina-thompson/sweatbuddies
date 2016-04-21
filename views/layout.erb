@@ -25,7 +25,6 @@
           <div id="navbar" class="navbar-collapse collapse navbar-right">
             <ul class="nav navbar-nav">
               <li><a href="/users/<%= current_user.id %>"><%= current_user.user_name %></a></li>
-            <li><a href="#">Search</a></li>
             <form class="navbar-form navbar-right" action="/logout" method="post">
               <input type="hidden"  value="delete"  name="_method">
               <button class="btn btn-default">Logout</button>
@@ -53,13 +52,6 @@
   
   <%= yield %>
 
- <!--  <div class="container">
-
-  <footer>
-    <hr>
-    <p><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>2016 Karina Thompson, GA WDI Project 2</p>
-  </footer>
-  </div> -->
 
   <script   src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

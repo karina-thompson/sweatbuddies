@@ -1,0 +1,49 @@
+<div class="container" id="editProfile">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div>
+        <h2>Edit your profile</h2>
+      </div>
+      <form action="/users/<%= current_user.id %>" method="post">
+       <input type="hidden" value="put" name="_method">
+        <div class="form-group">
+          <label for="email">Email address:</label>
+          <input type="email" class="form-control" name="email" value="<%= current_user.email %>">
+        </div>
+         <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" class="form-control" name="user_name" value="<%= current_user.user_name %>">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" name="password">
+        </div>
+         <div class="form-group">
+          <label for="location">Location:</label>
+          <input type="text" class="form-control" name="location" value="<%= current_user.location %>">
+        </div>
+         <div class="form-group">
+          <label for="greeting">Introduce Yourself:</label>
+          <textarea class="form-control" id="greeting" rows=5 name="greeting"><%= current_user.greeting %></textarea>
+        </div>
+        
+        <h3>I am interested in:</h3>
+        <div class="form-group" id="chooseInterests">
+
+        <% interests.each do |interest| %>  
+        <label class="checkbox">
+            <% if current_user.interests.include? interest %>
+              <input type="checkbox" id="checkbox<%= interest.id %>" value="<%= interest.id %>" name="interests[]" checked><%= interest.name %>
+            <% else %>
+              <input type="checkbox" id="checkbox<%= interest.id %>" value="<%= interest.id %>" name="interests[]"><%= interest.name %>
+            <% end %>
+        </label>
+        <% end %>
+        
+        </div>
+          
+        <button class="btn btn-default">Update Profile</button>
+      </form>
+    </div>
+  </div>
+</div>
