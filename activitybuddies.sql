@@ -17,7 +17,6 @@ CREATE TABLE interests (
   name VARCHAR(100)
 );
 
-
 CREATE TABLE interests_users (
   user_id INTEGER,
   interest_id INTEGER,

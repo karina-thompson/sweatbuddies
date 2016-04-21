@@ -67,15 +67,15 @@ post '/users' do
     redirect to '/users/new'
   end
   
-  if params[:interests] = [] 
-    flash[:warning] = "Please select at least one interest"
+  if params[:interests] == [] 
+    flash[:warning] = 'Please select at least one interest'
     redirect to '/users/new'
   end
 
   user.interests = Interest.find(params[:interests])
 
   session[:user_id] = user.id
-  redirect to "/users/#{user.id}"
+  redirect to "/users"
 end
 
 #User home page when logged in
@@ -111,9 +111,6 @@ get '/users/:id/edit' do
     erb :edit, locals: {interests: Interest.all }
   end
 end
-
-
-
 
 
 #update profile data
