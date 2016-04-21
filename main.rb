@@ -127,7 +127,7 @@ end
 
 #Show event listings
 get '/users/:id/events' do
-  erb :event_listing, locals: {interests: Interest.all, events: Event.all}
+  erb :event_listing, locals: {interests: Interest.all }
 end
 
 

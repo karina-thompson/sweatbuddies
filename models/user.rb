@@ -20,4 +20,5 @@ class User < ActiveRecord::Base
     common_interests(user).length > 0
   end
 
+
 end

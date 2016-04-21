@@ -1,14 +1,13 @@
 <div class="container">
-  <h1>Welcome to Sweat Buddies, <%= current_user.user_name %> </h1>
+  <h1>Welcome, <%= current_user.user_name %></h1>
 
-    <h3>What would you like to do today?</h3>
   
-    <ul>
-      <li><a href="/users/<%= current_user.id %>">See my profile</a></li>
-      <li><a href="/users/<%= current_user.id %>/edit">Update my profile</a></li>
-      <li><a href="/users/<%= current_user.id %>/search_results">See my potential new Sweat Buddies</a></li>
-      <li><a href="/users/<%= current_user.id %>/events">View event listings</a></li>
-      <li><a href="/users/<%= current_user.id %>/events/create">Create an event</a></li>
+    <ul id ="links">
+      <li><a href="/users/<%= current_user.id %>"><i class="fa fa-user fa-2x" aria-hidden="true"></i>  My profile</a></li>
+      <li><a href="/users/<%= current_user.id %>/edit"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>  Update my profile</a></li>
+      <li><a href="/users/<%= current_user.id %>/search_results"><i class="fa fa-users fa-2x" aria-hidden="true"></i>  See my Sweat Buddy matches</a></li>
+      <li><a href="/users/<%= current_user.id %>/events"><i class="fa fa-calendar fa-2x" aria-hidden="true"></i>  View event listings</a></li>
+      <li><a href="/users/<%= current_user.id %>/events/create"><i class="fa fa-calendar-plus-o fa-2x" aria-hidden="true"></i>  Create an event</a></li>
     </ul>
     
   </div>

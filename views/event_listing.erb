@@ -1,7 +1,7 @@
 
 <div class="container">
-  <h1>Event Listings</h1>
-
+  <h1>Events</h1>
+<div id="events">
 <% interests.each do |interest| %>
   <a href="#<%= interest.name.delete "/" " " %>" class="btn btn-default" data-toggle="collapse"><%= interest.name %></a><br>
   <div id="<%= interest.name.delete "/" " " %>" class="collapse">
@@ -14,12 +14,13 @@
       <p>Location: <%= event.location %></p>
       <p>When: <%= event.date_time %></p>
       <p>Details: <%= event.details %></p>
-      <p>Contact:<a href="/users/<%= event.user_id %>"><%= User.find(event.user_id).user_name %></a></p>
+      <p>Contact:<a href="/users/<%= event.user_id %>">  <%= User.find(event.user_id).user_name %></a></p>
     <% end %>
 
 
   </div>
 <% end %>
+</div>
 
 
 
