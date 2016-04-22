@@ -61,14 +61,16 @@ end
 
 # Create new profile
 post '/users' do
-  user = User.create(email: params[:email], user_name: params[:user_name], password: params[:password], location: params[:location], greeting: params[:greeting])
 
+  user = User.new(email: params[:email], user_name: params[:user_name], password: params[:password], location: params[:location], greeting: params[:greeting])
+  user.save if params[:interests]
+  
   if user.id == nil          #if AR validations have failed
     profile_errors(user)
     redirect to '/users/new'
   end
-  
-  if params[:interests] == [] 
+
+  unless params[:interests]     #if no interests have been selected
     flash[:warning] = 'Please select at least one interest'
     redirect to '/users/new'
   end
@@ -79,10 +81,12 @@ post '/users' do
   redirect to "/users"
 end
 
+
 #User home page when logged in
 get '/users' do
   erb :users
 end
+
 
 # Show user profile
 get '/users/:id' do
@@ -149,8 +153,6 @@ put '/users/:id' do
 
   redirect to "/users/#{user.id}"
 end
-
-
 
 
 post '/login' do

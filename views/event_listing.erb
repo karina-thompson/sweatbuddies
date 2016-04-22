@@ -1,5 +1,6 @@
 
 <div class="container">
+<div class="col-xs-offset-1">
   <h1>Events</h1>
 <div id="events">
 <% interests.each do |interest| %>
@@ -14,14 +15,14 @@
       <p>Location: <%= event.location %></p>
       <p>When: <%= event.date_time %></p>
       <p>Details: <%= event.details %></p>
-      <p>Contact:<a href="/users/<%= event.user_id %>">  <%= User.find(event.user_id).user_name %></a></p>
+      <p>Contact:<a href="/users/<%= event.user_id %>">  <%= User.find(event.user_id).user_name %></a></p><br>
     <% end %>
 
 
   </div>
 <% end %>
 </div>
-
+</div>
 
 
 

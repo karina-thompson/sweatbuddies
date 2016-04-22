@@ -3,31 +3,17 @@ body {
   height: 100%;
 }
 
-
 .carousel-inner img {
   width: 600px;
   margin: auto;
 }
 
-
 .jumbotron {
   text-align: center;
 }
 
-
-#profileCreate {
-  padding-bottom: 30px;
-}
-
 #chooseInterests {
   padding-left: 20px;
-}
-
-
-footer {
-  padding-top: 30px;
-  position: relative;
-  bottom: 0;
 }
 
 #matches li {
@@ -36,8 +22,16 @@ footer {
   font-size: 1.5em;
 }
 
+
+#matchesHeading {
+  padding-bottom: 2%;
+}
+
 #profile {
-  padding-top: 40px;
+  margin-top: 5%;
+  padding: 2% 0;
+  background-color: #F0F0F0;
+  border-radius: 30px;
 }
 
 #links li {
@@ -45,9 +39,17 @@ footer {
   list-style-type: none;
 }
 
-#events {
-  padding-top: 10px;
+#events a { 
+ width: 200px;
+ text-align: left;
 }
 
+#events {
+  padding-top: 1%;
+}
+
+#userMatch {
+  padding-bottom: 30px;
+}
 
 

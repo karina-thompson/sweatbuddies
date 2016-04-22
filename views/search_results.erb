@@ -1,19 +1,22 @@
 
-<div class="container">
-
-<h2><img src="/images/png/sports.png"> <img src="/images/png/sports-2.png"> Your potential sweat buddies  <img src="/images/png/sport.png">  <img src="/images/png/gym.png"></h2>
-
-  <ul id="matches">
+<div class="container-fluid">
+<div class="row" id="matchesHeading">
+  <div class="col-xs-offset-1">
+  <h3>Users with common interests</h3>
+  <h3><img src="/images/png/mountain.png"> <img src="/images/png/gym.png"> <img src="/images/png/sports.png"> <img src="/images/png/sports-2.png"> <img src="/images/png/exercise-1.png"> <img src="/images/png/ice.png"> <img src="/images/png/exercise.png"> <img src="/images/png/sport.png"> <img src="/images/png/sports-1.png"></h3>
+  </div></div>
+  <div id="matches">
   <% matches.each do |match| %>
 
-    <li>
-      <a href="/users/<%= match.id %>"><%= match.user_name %></a><br> You both like: 
+    <div class"row">
+      <div class="col-xs-offset-1">
+      <a href="/users/<%= match.id %>"><%= match.user_name %><br></a>You both like: 
       <% match.common_interests(current_user).each do |common| %>
-        <span><%= common.name %></span>
+        <span><i class="fa fa-star" aria-hidden="true"></i><%= common.name %></span>
       <% end %>
-    </li>
+    </div></div>
     
   <% end %> 
-  </ul>
-
+  </div>
+</div>
 </div>
