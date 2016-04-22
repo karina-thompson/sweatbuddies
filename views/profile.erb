@@ -2,7 +2,7 @@
 
 <div class="container" id="profile">
 <div class="row">
-<div class="col-md-5 col-md-offset-1">
+<div class="col-md-5 col-md-offset-1 col-xs-offset-1">
 
     <h1><i class="fa fa-star" aria-hidden="true"></i>  <%= user.user_name %></h1>
     <h4>Location: <%= user.location %></h4>
@@ -16,7 +16,7 @@
     <a class="btn btn-primary btn-lg" href="mailto: <%= user.email %>" role="button"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  Contact <%= user.user_name %></a>
   </div>
 
- <div class="col-md-5">
+ <div class="col-md-5 col-xs-offset-1">
       <h3><%= user.user_name %>'s Events</h3>
      <% if user.events == [] %>
       <p>No events yet!</p>

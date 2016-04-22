@@ -16,12 +16,6 @@ body {
   padding-left: 20px;
 }
 
-#matches li {
-  padding: 10px;
-  list-style-type: none;
-  font-size: 1.5em;
-}
-
 
 #matchesHeading {
   padding-bottom: 2%;
