@@ -14,7 +14,7 @@ Sweat Buddies is an app that helps a user find other people to exercise with, ba
 
 This was a real learning experience in building my first full-stack web app. The approach I took was perhaps not the best one in hindsight, next time I would try and plan more comprehensively before starting. A major challenge in planning was not knowing how long things would take and therefore how much I could feasibly get done in one week. 
 
-Key Points of this project:
+###Key Points of this project:
 - Users can log in and out and passwords are encryted using bcyrpt
 - Users can create and edit their profile
 - Users and interests are linked using a many to many Active Record association, allowing access to users with common interests.
