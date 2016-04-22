@@ -21,7 +21,7 @@ This was a real learning experience in building my first full-stack web app. The
 - Users can create events and each event belongs to an interest area.
 - There are custom alerts when users make an error with sign in or profile information, using some of the functionality of the Sinatra-Flash gem, with code written to work with Bootstrap alerts
 
-There is a lot more I would add to this app given more time, including:
+###There is a lot more I would add to this app given more time (and in some cases, more advanced skills), including:
 - Better CSS Styling! 
 - A messaging system for users rather than the dubious mail-to links to user email addresses that it has at the moment!
 - The ability for a user to delete events that they created (This is a work in progress at the moment...)
