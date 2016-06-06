@@ -38,14 +38,6 @@ helpers do
     html
   end
 
-  def profile_errors(user)
-    if user.errors.messages[:email]
-      flash[:danger] = user.errors.messages[:email].join
-    else 
-      flash[:warning] = "Please complete all fields" 
-    end
-  end
-
 end
 
 
@@ -59,39 +51,58 @@ get '/users/new' do
     erb :signup, locals: {interests: Interest.all}
 end
 
+def profile_errors(user)
+  puts user.errors.inspect
+  messages = ''
+  user.errors.full_messages.each do |message|
+    messages += "<p>#{message}</p>"
+  end
+  flash[:warning] = messages  
+end
+
 # Create new profile
 post '/users' do
 
-  user = User.new(email: params[:email], user_name: params[:user_name], password: params[:password], location: params[:location], greeting: params[:greeting])
-  user.save if params[:interests]
+  user = User.new(email:    params[:email],    user_name: params[:user_name],
+                  password: params[:password], location: params[:location],
+                  greeting: params[:greeting])
   
-  if user.id == nil          #if AR validations have failed
+  user.interests = Interest.find(params[:interests]) if params[:interests]
+  
+  if user.valid?
+    user.save 
+  else
     profile_errors(user)
     redirect to '/users/new'
   end
-
-  unless params[:interests]     #if no interests have been selected
-    flash[:warning] = 'Please select at least one interest'
-    redirect to '/users/new'
-  end
-
-  user.interests = Interest.find(params[:interests])
 
   session[:user_id] = user.id
   redirect to "/users"
 end
 
 
+#Create new event
+post '/users/events' do
+  event = Event.create(name: params[:name], location: params[:location], date_time: params[:date_time], details: params[:details], user_id: current_user.id, interest_id: params[:interest])
+
+  if event.id == nil
+    flash[:warning] = 'Please complete all fields'
+    redirect to "/users/#{current_user.id}/events/create"
+  end
+
+  erb :event_listing, locals: {interests: Interest.all}
+end
+
+
+#Show event listings
+get '/users/events' do
+  erb :event_listing, locals: {interests: Interest.all }
+end
+
 #User home page when logged in
 get '/users' do
   erb :users
 end
-
-
-# Show user profile
-get '/users/:id' do
- erb :profile, locals: {user: User.find(params[:id])}
-end 
 
 
 #Display matching users
@@ -111,37 +122,22 @@ end
 
 
 #Create event form
-get '/users/:id/events/create' do
-  erb :create_event, locals: {interests: Interest.all, user: User.find(params[:id])}
-end
-
-
-#Create new event
-post '/users/:id/events' do
-  event = Event.create(name: params[:name], location: params[:location], date_time: params[:date_time], details: params[:details], user_id: current_user.id, interest_id: params[:interest])
-
-  if event.id == nil
-    flash[:warning] = 'Please complete all fields'
-    redirect to "/users/#{current_user.id}/events/create"
-  end
-
-  erb :event_listing, locals: {interests: Interest.all}
-end
-
-
-#Show event listings
-get '/users/:id/events' do
-  erb :event_listing, locals: {interests: Interest.all }
+get '/users/events/create' do
+  erb :create_event, locals: {interests: Interest.all, user: current_user}
 end
 
 
 #show edit profile page
-get '/users/:id/edit' do
+get '/users/edit' do
   if logged_in?
     erb :edit, locals: {interests: Interest.all }
   end
 end
 
+# Show user profile
+get '/users/:id' do
+ erb :profile, locals: {user: User.find(params[:id])}
+end 
 
 #update profile data
 put '/users/:id' do

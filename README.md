@@ -1,5 +1,6 @@
 
 #Sweat Buddies
+==============
 
 Project 2 for GA WDI6 Melbourne
 
@@ -14,12 +15,16 @@ Sweat Buddies is an app that helps a user find other people to exercise with, ba
 
 This was a real learning experience in building my first full-stack web app. The approach I took was perhaps not the best one in hindsight, next time I would try and plan more comprehensively before starting. A major challenge in planning was not knowing how long things would take and therefore how much I could feasibly get done in one week. I did make use of Trello to keep track of tasks, which I found helpful and I tried to develop both the backend and front end for each part of the site before moving on (although this didn't quite happen towards the end - the front end definitely needs some more work!)
 
+___________________________________________________________________________________
+
 ####Key Points of this project:
 - Users can log in and out and passwords are encryted using bcyrpt
 - Users can create and edit their profile
 - Users and interests are linked using a many to many Active Record association, allowing access to users with common interests.
 - Users can create events and each event belongs to an interest area.
-- There are custom alerts when users make an error with sign in or profile information, using some of the functionality of the Sinatra-Flash gem, with code written to work with Bootstrap alerts.
+- There are custom alerts when users make an error with sign in or profile information, using some of the functionality of the Sinatra-Flash gem, with code written to work with Bootstrap alerts. There are Active Record validations in place to avoid blank data fields and prevent users signing up more than once with the same email address.
+
+___________________________________________________________________________________
 
 ####There is a lot more I would add to this app given more time (and in some cases, more advanced skills), including:
 - Better CSS Styling! 
