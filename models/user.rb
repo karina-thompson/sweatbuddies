@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   validates_presence_of :location
   validates_presence_of :user_name
   validates_presence_of :interests, message: ": please select at least one"
- 
 
   def common_interests(user)
     common = []
@@ -22,6 +21,5 @@ class User < ActiveRecord::Base
   def compatible?(user)
     common_interests(user).length > 0
   end
-
 
 end
