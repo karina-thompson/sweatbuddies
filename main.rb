@@ -53,10 +53,9 @@ post '/users/events' do
   erb :event_listing, locals: {interests: Interest.all}
 end
 
-
 #Show event listings
 get '/users/events' do
-  erb :event_listing, locals: {interests: Interest.all }
+  erb :event_listing, locals: {interests: Interest.all, events: Event.all }
 end
 
 #User home page when logged in
@@ -74,8 +73,8 @@ get '/users/:id/search_results' do
     end
   end
   matches.sort_by! do |match| 
-    interests = match.common_interests(current_user)
-    [-interests.count, interests.first.name]
+    common = match.common_interests(current_user)
+    [-common.count, common.first.name]
   end
   erb :search_results, locals: {matches: matches}
 end

@@ -33,17 +33,18 @@ body {
   list-style-type: none;
 }
 
-#events a { 
- width: 200px;
- text-align: left;
-}
-
-#events {
-  padding-top: 1%;
-}
-
 #userMatch {
   padding-bottom: 30px;
+}
+
+#event-categories {
+  background-color: #F8F8F8;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #2F6FA7;
+  color: white;
 }
 
 

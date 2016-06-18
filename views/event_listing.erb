@@ -1,29 +1,29 @@
 
 <div class="container">
-<div class="col-xs-offset-1">
   <h1>Events</h1>
-<div id="events">
-<% interests.each do |interest| %>
-  <a href="#<%= interest.name.delete "/" " " %>" class="btn btn-default" data-toggle="collapse"><%= interest.name %></a><br>
-  <div id="<%= interest.name.delete "/" " " %>" class="collapse">
-    <% if interest.events == [] %>
-      <p>No events for this category yet!</p>
-    <% end%>
+    <div class="row col-md-2 table-responsive">    
+      <table class="table table-bordered" id="event-categories">
+        <tbody>
+            <tr><td class="interest-menu selected" id="all-events">All Events</td></tr>
+           <% interests.each do |interest| %>
+            <tr><td class="interest-menu" data-interest="<%= interest.id %>"><%= interest.name %></td></tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
 
-    <% interest.events.each do |event| %>
-      <h5><%= event.name %></h5>
-      <p>Location: <%= event.location %></p>
-      <p>When: <%= event.date_time %></p>
-      <p>Details: <%= event.details %></p>
-      <p>Contact:<a href="/users/<%= event.user_id %>">  <%= User.find(event.user_id).user_name %></a></p><br>
+  <div class="col-md-offset-1 col-md-8" id="event-details">
+    <% events.each do |event| %>
+        <% interest = event.interest %>
+        <div class="event-listings" data-interest="<%= interest.id %>">
+          <h5><%= event.name %></h5>
+          <p>Location: <%= event.location %></p>
+          <p>When: <%= event.date_time %></p>
+          <p>Details: <%= event.details %></p>
+          <p>Contact:<a href="/users/<%= event.user_id %>">  <%= User.find(event.user_id).user_name %></a></p><br>
+      </div>
     <% end %>
-
-
   </div>
-<% end %>
-</div>
-</div>
-
-
 
 </div>
+
