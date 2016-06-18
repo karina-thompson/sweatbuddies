@@ -1,6 +1,6 @@
 
 #Sweat Buddies
-____________
+
 
 Project 2 for GA WDI6 Melbourne
 
